@@ -280,7 +280,7 @@ for totalstep = baseStep+1:totalSPStep
     dX = max(0,(S-betaTVSpa/lambdaSpa)).*(divmuSpaX+bdivmuSpaX)./(S+eps);
     dY = max(0,(S-betaTVSpa/lambdaSpa)).*(divmuSpaY+bdivmuSpaY)./(S+eps);
     
-    cost3 = sum(sum(sum(betaTVSpaX*abs(dX))))+sum(sum(sum(lambdaSpa/2*(dX-divmuSpaX-bdivmuSpaX).^2)))++sum(sum(sum(lambdaSpa/2*(dY-divmuSpaY-bdivmuSpaY).^2)));
+    cost3 = sum(sum(sum(betaTVSpa*sqrt(dX.^2+dY.^2))))+sum(sum(sum(lambdaSpa/2*(dX-divmuSpaX-bdivmuSpaX).^2)))++sum(sum(sum(lambdaSpa/2*(dY-divmuSpaY-bdivmuSpaY).^2)));
     fprintf('Current step %d, dX subproblem cost: %f\n',totalstep,cost3);
     
     bdivmuSpaX = bdivmuSpaX+divmuSpaX-dX;
